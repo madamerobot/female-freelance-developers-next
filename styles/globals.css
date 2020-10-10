@@ -1,0 +1,278 @@
+@font-face {
+	font-family: riposteLight;
+	src: url('/riposte-light.otf') format('opentype');
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	scroll-behavior: smooth;
+	background: yellow;
+	animation: toggle-background 30s infinite;
+}
+
+body {
+	box-sizing: border-box;
+	position: relative;
+}
+
+a {
+	color: black;
+}
+
+h1 {
+	font-size: 7vw;
+	line-height: 1;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+button {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+	outline: none;
+	border: solid black 2px;
+	font-size: 50px;
+	line-height: 1;
+	cursor: pointer;
+	background: pink;
+}
+
+.layout-wrapper {
+	display: flex;
+	flex-direction: row;
+	color: black;
+	font-family: riposteLight;
+	animation: fade-in-content 3s ease;
+}
+
+.side-col {
+	width: 26%;
+	border-right: black solid 2px;
+	padding: 50px;
+}
+
+.side-col--section h3 {
+	font-size: 3vw;
+	border-bottom: black solid 2px;
+	padding-bottom: 20px;
+}
+
+.side-col--section img {
+	width: 100%;
+	padding-top: 6px;
+}
+
+.side-col--section:last-of-type {
+	padding-top: 20px;
+}
+
+.side-col--section p,
+ul,
+li {
+	font-size: 2vw;
+}
+
+.side-logo {
+	position: sticky;
+	bottom: 20px;
+}
+
+.main-col {
+	width: 74%;
+	padding: 50px;
+}
+
+.main-col a {
+	text-decoration: none;
+}
+
+.main-col--header {
+	display: flex;
+	margin-bottom: 3vw;
+}
+
+.main-col--header svg {
+	width: 30vw;
+	height: auto;
+}
+
+.main-col--header svg path {
+	animation: flicker-bubble 3s ease infinite;
+	animation-delay: 3s;
+}
+
+.main-col--header tspan {
+	font-family: riposteLight;
+}
+
+.main-col--section-row,
+.main-col--section-header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.main-col--section-header {
+	font-size: 3vw;
+	font-weight: bold;
+	border-bottom: solid black 2px;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+}
+
+.main-col--section-header span {
+	text-transform: uppercase;
+}
+
+.main-col--section-body {
+	font-size: 2vw;
+	line-height: 1.4;
+	margin-bottom: 50px;
+}
+
+.main-col--section-row:not(:last-of-type) {
+	border-bottom: dotted black 2px;
+}
+
+.main-col--section-row div {
+	width: 50%;
+}
+
+.main-col--section-row div:first-of-type {
+	text-align: left;
+}
+
+.main-col--section-row div:last-of-type {
+	text-align: end;
+}
+
+.search-field {
+	font-family: riposteLight;
+	font-weight: normal;
+	font-size: 3vw;
+	font-weight: bold;
+	border-bottom: solid black 2px;
+	margin-bottom: 70px;
+	background: none;
+	color: black;
+	outline: none;
+	border-color: black;
+}
+
+.search-field::-webkit-input-placeholder,
+.search-field:-ms-input-placeholder,
+.search-field::placeholder {
+	color: black;
+}
+
+.search-notification {
+	font-size: 2vw;
+}
+
+@media screen and (max-width: 800px) {
+	.h1-headline {
+		font-size: 50px;
+	}
+	.layout-wrapper {
+		flex-direction: column-reverse;
+		padding: 10px;
+		word-break: break-word;
+	}
+	.main-col {
+		width: 100%;
+	}
+	.side-col {
+		width: 100%;
+		border: none;
+	}
+	.side-logo {
+		position: relative;
+	}
+	.main-col,
+	.side-col {
+		padding: 20px;
+	}
+	.main-col--header {
+		flex-direction: column-reverse;
+		margin-bottom: 3vw;
+	}
+	.main-col--header svg {
+		width: 100%;
+	}
+	.main-col--section-body {
+		margin-bottom: 30px;
+	}
+	.main-col--section-row {
+		flex-direction: column;
+		padding: 12px 0;
+	}
+	.main-col--section-row div:last-of-type {
+		text-align: left;
+		width: 100%;
+	}
+	.main-col--section-body,
+	.search-notification,
+	.side-col--section p,
+	ul,
+	li {
+		font-size: 24px;
+	}
+	.main-col--section-header,
+	.side-col--section h3 {
+		font-size: 30px;
+	}
+	#manifest {
+		font-size: 50px;
+		margin-top: 0;
+	}
+	.search-field {
+		width: 100%;
+		height: 40px;
+		font-size: 30px;
+		margin: 30px 0;
+	}
+}
+
+@keyframes toggle-background {
+	0% {
+		background: yellow;
+	}
+	50% {
+		background: pink;
+	}
+	100% {
+		background: yellow;
+	}
+}
+
+@keyframes fade-in-content {
+	0% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0.8;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes flicker-bubble {
+	0% {
+		stroke: blue;
+	}
+	50% {
+		stroke: yellow;
+	}
+	100% {
+		stroke: blue;
+	}
+}
