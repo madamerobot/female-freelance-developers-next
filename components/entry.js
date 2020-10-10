@@ -29,7 +29,7 @@ const Entry = ({ data }) => (
 					</a>
 				</div>
 			</div>
-			{data.social ? (
+			{data.socialUrl ? (
 				<div className="main-col--section-row">
 					<div>Social</div>
 					<div>
