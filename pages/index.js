@@ -28,7 +28,7 @@ export default function Home(props) {
 	);
 
 	return (
-		<main className="layout-wrapper">
+		<main>
 			<Head />
 			<div className="layout-wrapper">
 				<div className="side-col">
