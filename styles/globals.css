@@ -155,13 +155,15 @@ li {
 }
 
 .search-field {
+	width: 50%;
 	font-family: riposteLight;
-	font-weight: normal;
+	font-weight: 400;
 	font-size: 3vw;
-	font-weight: bold;
+	border: none;
 	border-bottom: solid black 2px;
-	margin-bottom: 70px;
-	margin-top: 30px;
+	margin-bottom: 50px;
+	margin-top: 0;
+	padding-bottom: 20px;
 	background: none;
 	color: black;
 	outline: none;
@@ -213,7 +215,9 @@ input[type=text] {
 		margin-bottom: 3vw;
 	}
 	.main-col--header svg {
-		display: none;
+		position: absolute;
+		top: 20px;
+		right: 20px;
 	}
 	.main-col--section-body {
 		margin-bottom: 30px;
@@ -254,15 +258,17 @@ input[type=text] {
 		-moz-appearance: none;
 	}
 	.search-field {
+		width: 70%;
 		height: 40px;
 		font-size: 30px;
 		font-weight: normal;
-		margin: 30px 0;
+		margin: 20px 0 40px;
 		max-width: 90%;
 		outline: none;
 		border-radius: 0;
 		box-shadow: none !important;
-		border: 2px solid black;
+		padding-bottom: 0;
+		padding-left: 0;
 	}
 }
 

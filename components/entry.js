@@ -15,7 +15,7 @@ const Entry = ({ data }) => (
 				<div className="main-col--section-row">
 					<div className="main-col--section-row-info">Website</div>
 					<div>
-						<a className="a-element" href={data.website}>
+						<a className="a-element" target="_blank" href={data.website}>
 							{data.website}
 						</a>
 					</div>
@@ -24,7 +24,11 @@ const Entry = ({ data }) => (
 			<div className="main-col--section-row">
 				<div className="main-col--section-row-info">Email</div>
 				<div>
-					<a className="a-element" href={`mailto:${data.email}?subject=Female Frontend Developers`}>
+					<a
+						className="a-element"
+						target="_blank"
+						href={`mailto:${data.email}?subject=Female Frontend Developers`}
+					>
 						{data.email}
 					</a>
 				</div>
