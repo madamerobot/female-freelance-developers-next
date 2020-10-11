@@ -13,7 +13,7 @@ const Entry = ({ data }) => (
 		<div className="main-col--section-body">
 			{data.website ? (
 				<div className="main-col--section-row">
-					<div>Website</div>
+					<div className="main-col--section-row-info">Website</div>
 					<div>
 						<a className="a-element" href={data.website}>
 							{data.website}
@@ -22,7 +22,7 @@ const Entry = ({ data }) => (
 				</div>
 			) : null}
 			<div className="main-col--section-row">
-				<div>Email</div>
+				<div className="main-col--section-row-info">Email</div>
 				<div>
 					<a className="a-element" href={`mailto:${data.email}?subject=Female Frontend Developers`}>
 						{data.email}
@@ -31,19 +31,19 @@ const Entry = ({ data }) => (
 			</div>
 			{data.socialUrl ? (
 				<div className="main-col--section-row">
-					<div>Social</div>
+					<div className="main-col--section-row-info">Social</div>
 					<div>
 						<a href={data.socialUrl}>@{data.socialHandle}</a>
 					</div>
 				</div>
 			) : null}
 			<div className="main-col--section-row">
-				<div>Expertise</div>
+				<div className="main-col--section-row-info">Expertise</div>
 				<div>{data.expertise}</div>
 			</div>
 			{data.location ? (
 				<div className="main-col--section-row">
-					<div>Location</div>
+					<div className="main-col--section-row-info">Location</div>
 					<div>{data.location}</div>
 				</div>
 			) : null}

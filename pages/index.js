@@ -104,7 +104,7 @@ export default function Home(props) {
 							</svg>
 						</div>
 					</div>
-					<div>
+					<div className="search-field--wrapper">
 						<input
 							className="search-field"
 							type="text"
