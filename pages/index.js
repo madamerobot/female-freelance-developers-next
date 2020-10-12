@@ -135,5 +135,9 @@ Home.getInitialProps = async (ctx) => {
 			searchInfo: `${entry.location} ${entry.expertise}`.toLowerCase()
 		};
 	});
-	return { entries };
+	const shuffledEntries = entries
+		.map((a) => ({ sort: Math.random(), value: a }))
+		.sort((a, b) => a.sort - b.sort)
+		.map((a) => a.value);
+	return { entries: shuffledEntries };
 };
