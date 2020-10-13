@@ -138,6 +138,7 @@ Home.getInitialProps = async (ctx) => {
 	const shuffledEntries = entries
 		.map((a) => ({ sort: Math.random(), value: a }))
 		.sort((a, b) => a.sort - b.sort)
-		.map((a) => a.value);
+		.map((a) => a.value)
+		.filter((a) => a.approved === 'Yes');
 	return { entries: shuffledEntries };
 };
