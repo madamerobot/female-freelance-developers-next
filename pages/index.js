@@ -62,7 +62,7 @@ export default function Home(props) {
 						</p>
 					</div>
 					<div className="side-col--section side-logo">
-						<a href="https://valerie-fuchs.com/">
+						<a href="https://cafe-robot.co/">
 							<img src="cafe-robot-logo.png" alt="Cafe Robot Logo" />
 						</a>
 					</div>
