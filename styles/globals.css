@@ -239,7 +239,7 @@ input {
 }
 
 .submit-form-wrapper .back-item {
-	font-size: 18px;
+	font-size: 2vw;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -300,7 +300,8 @@ input {
 	.submit-form-wrapper ul,
 	.submit-form-wrapper input,
 	.submit-form-wrapper textarea,
-	.submit-form-wrapper button {
+	.submit-form-wrapper button,
+	.submit-form-wrapper .back-item {
 		font-size: 20px;
 		font-weight: normal;
 	}

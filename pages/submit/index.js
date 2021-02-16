@@ -56,7 +56,7 @@ export default function Submit() {
 	};
 
 	const handleChange = (e) => {
-		setForm({ ...form, [`${e.target.id}`]: e.target.value });
+		setForm({ ...form, [`${e.target.id}`]: e.target.defaultValue });
 	};
 
 	return (
@@ -159,9 +159,16 @@ export default function Submit() {
 						</ul>
 						<p>
 							Usually your site will get listed within a few days. If you get
-							any cool work or other opportunities through us, let me know
-							(email or Instagram). I am always happy to hear your stories and
-							might feature them in the future.
+							any cool work or other opportunities through us, let me know (
+							<a href="mailto:valerie@cafe-robot.co" target="_blank">
+								↗email
+							</a>{" "}
+							or{" "}
+							<a href="https://www.instagram.com/madame_robot/" target="_blank">
+								↗Instagram
+							</a>
+							). I am always happy to hear your stories and might feature them
+							in the future.
 						</p>
 						<div>
 							<form onChange={handleChange}>
@@ -169,28 +176,28 @@ export default function Submit() {
 									type="text"
 									placeholder="First name*"
 									id="firstName"
-									value={form.firstName}
+									defaultValue={form.firstName}
 									required
 								/>
 								<input
 									type="text"
 									placeholder="Last name*"
 									id="lastName"
-									value={form.lastName}
+									defaultValue={form.lastName}
 									required
 								/>
 								<input
 									type="text"
 									placeholder="Website*"
 									id="website"
-									value={form.website}
+									defaultValue={form.website}
 									required
 								/>
 								<input
 									type="email"
 									placeholder="Email*"
 									id="email"
-									value={form.email}
+									defaultValue={form.email}
 									required
 								/>
 								<textarea
@@ -198,19 +205,19 @@ export default function Submit() {
 									cols="1"
 									placeholder="Expertise*"
 									id="expertise"
-									value={form.expertise}
+									defaultValue={form.expertise}
 									required
 								/>
 								<input
 									type="text"
 									placeholder="Location"
-									value={form.location}
+									defaultValue={form.location}
 									id="location"
 								/>
 								<input
 									type="text"
 									placeholder="Social url (Instagram, Twitter, ..)"
-									value={form.socialUrl}
+									defaultValue={form.socialUrl}
 									id="socialUrl"
 								/>
 								<button type="submit" onClick={handleSubmit}>
