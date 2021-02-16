@@ -1,15 +1,14 @@
-import { loadGetInitialProps } from 'next/dist/next-server/lib/utils';
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 /* components */
-import Head from '../components/head';
-import Entry from '../components/entry';
+import Head from "../components/head";
+import Entry from "../components/entry";
 
 export default function Home(props) {
 	const { entries } = props;
 
-	const [ searchTerm, setSearchTerm ] = useState('');
-	const [ results, setResults ] = useState([]);
+	const [searchTerm, setSearchTerm] = useState("");
+	const [results, setResults] = useState([]);
 
 	const handleChange = (e) => {
 		setSearchTerm(e.target.value);
@@ -19,13 +18,12 @@ export default function Home(props) {
 		setResults(entries);
 	}, []);
 
-	useEffect(
-		() => {
-			const results = entries.filter((entry) => entry.searchInfo.includes(searchTerm.toLowerCase()));
-			setResults(results);
-		},
-		[ searchTerm ]
-	);
+	useEffect(() => {
+		const results = entries.filter((entry) =>
+			entry.searchInfo.includes(searchTerm.toLowerCase())
+		);
+		setResults(results);
+	}, [searchTerm]);
 
 	return (
 		<main>
@@ -35,16 +33,23 @@ export default function Home(props) {
 					<div className="side-col--section">
 						<h3 id="manifest">The Manifest</h3>
 						<p>
-							It is hard to find female freelance developers! This list shall help you to get a more
-							diverse selection of cool people to make the best choice for your project.
+							It is hard to find female (identifying) freelance developers! This
+							list shall help you to get a more diverse selection of cool people
+							to make the best choice for your project.
 						</p>
 					</div>
 					<div className="side-col--section">
 						<h3>How to ask</h3>
-						<p>Here are some helpful questions to answer when you approach a developer for a project:</p>
+						<p>
+							Here are some helpful questions to answer when you approach a
+							developer for a project:
+						</p>
 						<ul>
 							<li>Does the job include only development or also design?</li>
-							<li>Which technologies have to be used or does the developer have free choice?</li>
+							<li>
+								Which technologies have to be used or does the developer have
+								free choice?
+							</li>
 							<li>What is the budget and the timeline? :)</li>
 							<li>Do you have reference links to websites you like?</li>
 						</ul>
@@ -52,13 +57,8 @@ export default function Home(props) {
 					<div className="side-col--section">
 						<h3>Get listed</h3>
 						<p>
-							Alrighty! Add your name{' '}
-							<a
-								className="a-element"
-								href="https://docs.google.com/spreadsheets/d/1hq8FaRUO1tVlXhTC1qp7sY-8_IvN78z27gAK8YqdNUk/edit?usp=sharing"
-							>
-								to this sheet.
-							</a>
+							Alrighty! You can submit your details through{" "}
+							<a href="/submit">this form.</a>
 						</p>
 					</div>
 					<div className="side-col--section side-logo">
@@ -71,7 +71,11 @@ export default function Home(props) {
 					<div className="main-col--header">
 						<div>
 							<h1 className="h1-headline">
-								Female<br />Freelance<br />Developers
+								Female
+								<br />
+								Freelance
+								<br />
+								Developers
 							</h1>
 						</div>
 						<div>
@@ -87,10 +91,10 @@ export default function Home(props) {
 									>
 										<tspan x="263.329" y="203.238">
 											OMG YASS
-										</tspan>{' '}
+										</tspan>{" "}
 										<tspan x="318.019" y="268.038">
-											THERE{' '}
-										</tspan>{' '}
+											THERE{" "}
+										</tspan>{" "}
 										<tspan x="281.43" y="332.838">
 											IS A LIST!
 										</tspan>
@@ -132,13 +136,13 @@ Home.getInitialProps = async (ctx) => {
 	const entries = json.list.map((entry) => {
 		return {
 			...entry,
-			searchInfo: `${entry.location} ${entry.expertise}`.toLowerCase()
+			searchInfo: `${entry.location} ${entry.expertise} ${entry.firstName} ${entry.lastName}`.toLowerCase(),
 		};
 	});
 	const shuffledEntries = entries
 		.map((a) => ({ sort: Math.random(), value: a }))
 		.sort((a, b) => a.sort - b.sort)
 		.map((a) => a.value)
-		.filter((a) => a.approved === 'Yes');
+		.filter((a) => a.approved === "Yes");
 	return { entries: shuffledEntries };
 };

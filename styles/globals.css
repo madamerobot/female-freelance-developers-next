@@ -1,12 +1,12 @@
 @font-face {
 	font-family: riposteLight;
-	src: url('/riposte-light.otf') format('opentype');
+	src: url("/riposte-light.otf") format("opentype");
 }
 
 html,
 body {
 	width: 100vw;
-	overflow-x: hidden;
+	/* overflow-x: hidden; */
 	margin: 0;
 	padding: 0;
 }
@@ -27,22 +27,6 @@ h1 {
 	line-height: 1;
 	margin-top: 0;
 	margin-bottom: 0;
-}
-
-button {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	border-radius: 50%;
-	width: 100px;
-	height: 100px;
-	outline: none;
-	border: solid black 2px;
-	font-size: 50px;
-	line-height: 1;
-	cursor: pointer;
-	background: pink;
 }
 
 .layout-wrapper {
@@ -170,7 +154,7 @@ li {
 	border-color: black;
 }
 
-input[type=text] {
+input[type="text"] {
 	-webkit-appearance: none;
 }
 
@@ -182,6 +166,83 @@ input[type=text] {
 
 .search-notification {
 	font-size: 2vw;
+}
+
+.submit-form-wrapper {
+	position: relative;
+}
+
+.submit-form-wrapper form {
+	display: flex;
+	flex-direction: column;
+}
+
+.submit-form-wrapper h3 {
+	font-size: 3vw;
+	border-bottom: black solid 2px;
+	padding-bottom: 20px;
+}
+
+.submit-form-wrapper input,
+.submit-form-wrapper textarea {
+	font-family: riposteLight;
+	font-size: 2vw;
+	background: none;
+	border: none;
+	border-bottom: dotted black 2px;
+	outline: none;
+	padding: 10px 0;
+}
+
+.submit-form-wrapper textarea {
+	resize: none;
+}
+
+.submit-form-wrapper input::placeholder,
+.submit-form-wrapper textarea::placeholder {
+	color: black;
+}
+
+.submit-form-wrapper p,
+ul,
+li,
+input {
+	font-size: 2vw;
+}
+
+.submit-form-wrapper p,
+.submit-form-wrapper ul {
+	width: 80%;
+}
+
+.submit-form-wrapper button {
+	font-family: riposteLight;
+	font-size: 2vw;
+	background: none;
+	width: 20%;
+	margin: 3vw 0;
+	padding: 10px 0;
+	border: none;
+	outline: none;
+	border: black solid 2px;
+	cursor: pointer;
+}
+.submit-form-wrapper button:hover {
+	background: black;
+	color: white;
+}
+
+.submit-form-wrapper .status {
+	color: blue;
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.submit-form-wrapper .back-item {
+	font-size: 18px;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 @media screen and (max-width: 800px) {
@@ -234,12 +295,27 @@ input[type=text] {
 	.search-notification,
 	.side-col--section p,
 	ul,
-	li {
+	li,
+	.submit-form-wrapper p,
+	.submit-form-wrapper ul,
+	.submit-form-wrapper input,
+	.submit-form-wrapper textarea,
+	.submit-form-wrapper button {
 		font-size: 20px;
 		font-weight: normal;
 	}
+	.submit-form-wrapper {
+		margin-bottom: 30px;
+	}
+	.submit-form-wrapper p {
+		width: 100%;
+	}
+	.submit-form-wrapper button {
+		width: 50%;
+	}
 	.main-col--section-header,
-	.side-col--section h3 {
+	.side-col--section h3,
+	.submit-form-wrapper h3 {
 		font-size: 30px;
 		font-weight: normal;
 		line-height: 0.9;
@@ -253,7 +329,7 @@ input[type=text] {
 		font-size: 50px;
 		margin-top: 0;
 	}
-	input[type=text] {
+	input[type="text"] {
 		-webkit-appearance: none;
 		-moz-appearance: none;
 	}
