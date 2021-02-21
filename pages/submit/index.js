@@ -1,62 +1,55 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 /* components */
-import Head from "../../components/head";
+import Head from '../../components/head';
 
 export default function Submit() {
-	const [form, setForm] = useState({
-		firstName: "",
-		lastName: "",
-		website: "",
-		email: "",
-		socialUrl: "",
-		expertise: "",
-		location: "",
-		approved: "No",
+	const [ form, setForm ] = useState({
+		firstName: '',
+		lastName: '',
+		website: '',
+		email: '',
+		socialUrl: '',
+		expertise: '',
+		location: '',
+		approved: 'No'
 	});
 
-	const [status, setStatus] = useState("");
+	const [ status, setStatus ] = useState('');
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		let url =
-			"https://api.sheety.co/5170e23598c9a17c11d3f0577571efe2/femaleFreelanceDevelopers/list";
+		let url = 'https://api.sheety.co/5170e23598c9a17c11d3f0577571efe2/femaleFreelanceDevelopers/list';
 
 		let body = {
 			list: {
-				...form,
-			},
+				...form
+			}
 		};
 
-		if (
-			form.firstName &&
-			form.lastName &&
-			form.website &&
-			form.email &&
-			form.expertise
-		) {
+		if (form.firstName && form.lastName && form.website && form.email && form.expertise) {
 			fetch(url, {
-				method: "POST",
+				method: 'POST',
 				headers: {
-					"Content-Type": "application/json",
+					'Content-Type': 'application/json'
 				},
-				body: JSON.stringify(body),
+				body: JSON.stringify(body)
 			})
 				.then((res) => res.json())
 				.then((json) => {
 					if (json.list) {
-						setStatus("Thanks for submitting!");
+						setStatus('Thanks for submitting!');
 					} else {
-						setStatus("Oh no, something went wrong!");
+						setStatus('Oh no, something went wrong!');
 					}
 				});
 		} else {
-			setStatus("Please make sure you fill in all mandatory fields.");
+			setStatus('Please make sure you fill in all mandatory fields.');
 		}
 	};
 
 	const handleChange = (e) => {
-		setForm({ ...form, [`${e.target.id}`]: e.target.defaultValue });
+		setForm({ ...form, [`${e.target.id}`]: e.target.value });
 	};
 
 	return (
@@ -67,23 +60,16 @@ export default function Submit() {
 					<div className="side-col--section">
 						<h3 id="manifest">The Manifest</h3>
 						<p>
-							It is hard to find female (identifying) freelance developers! This
-							list shall help you to get a more diverse selection of cool people
-							to make the best choice for your project.
+							It is hard to find female (identifying) freelance developers! This list shall help you to
+							get a more diverse selection of cool people to make the best choice for your project.
 						</p>
 					</div>
 					<div className="side-col--section">
 						<h3>How to ask</h3>
-						<p>
-							Here are some helpful questions to answer when you approach a
-							developer for a project:
-						</p>
+						<p>Here are some helpful questions to answer when you approach a developer for a project:</p>
 						<ul>
 							<li>Does the job include only development or also design?</li>
-							<li>
-								Which technologies have to be used or does the developer have
-								free choice?
-							</li>
+							<li>Which technologies have to be used or does the developer have free choice?</li>
 							<li>What is the budget and the timeline? :)</li>
 							<li>Do you have reference links to websites you like?</li>
 						</ul>
@@ -91,8 +77,7 @@ export default function Submit() {
 					<div className="side-col--section">
 						<h3>Get listed</h3>
 						<p>
-							Alrighty! You can submit your details through{" "}
-							<a href="/submit">this form.</a>
+							Alrighty! You can submit your details through <a href="/submit">this form.</a>
 						</p>
 					</div>
 					<div className="side-col--section side-logo">
@@ -125,10 +110,10 @@ export default function Submit() {
 									>
 										<tspan x="263.329" y="203.238">
 											OMG YASS
-										</tspan>{" "}
+										</tspan>{' '}
 										<tspan x="318.019" y="268.038">
-											THERE{" "}
-										</tspan>{" "}
+											THERE{' '}
+										</tspan>{' '}
 										<tspan x="281.43" y="332.838">
 											IS A LIST!
 										</tspan>
@@ -149,8 +134,8 @@ export default function Submit() {
 						</a>
 						<h3>Join us!</h3>
 						<p>
-							Hi there! Thanks for wanting to be a part of the crew. Please fill
-							in your details below and we will review your submission.
+							Hi there! Thanks for wanting to be a part of the crew. Please fill in your details below and
+							we will review your submission.
 						</p>
 						<h3>Must haves</h3>
 						<ul>
@@ -158,17 +143,16 @@ export default function Submit() {
 							<li>A couple of client projects</li>
 						</ul>
 						<p>
-							Usually your site will get listed within a few days. If you get
-							any cool work or other opportunities through us, let me know (
+							Usually your site will get listed within a few days. If you get any cool work or other
+							opportunities through us, let me know (
 							<a href="mailto:valerie@cafe-robot.co" target="_blank">
 								↗email
-							</a>{" "}
-							or{" "}
+							</a>{' '}
+							or{' '}
 							<a href="https://www.instagram.com/madame_robot/" target="_blank">
 								↗Instagram
 							</a>
-							). I am always happy to hear your stories and might feature them
-							in the future.
+							). I am always happy to hear your stories and might feature them in the future.
 						</p>
 						<div>
 							<form onChange={handleChange}>
@@ -208,12 +192,7 @@ export default function Submit() {
 									defaultValue={form.expertise}
 									required
 								/>
-								<input
-									type="text"
-									placeholder="Location"
-									defaultValue={form.location}
-									id="location"
-								/>
+								<input type="text" placeholder="Location" defaultValue={form.location} id="location" />
 								<input
 									type="text"
 									placeholder="Social url (Instagram, Twitter, ..)"
