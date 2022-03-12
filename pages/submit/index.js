@@ -143,7 +143,7 @@ export default function Submit() {
 							<li>A couple of client projects</li>
 						</ul>
 						<p>
-							Usually your site will get listed within a few days. If you get any cool work or other
+							If approved, your site will get listed within a few days. If you get any cool work or other
 							opportunities through us, let me know (
 							<a href="mailto:valerie@cafe-robot.co" target="_blank">
 								↗email

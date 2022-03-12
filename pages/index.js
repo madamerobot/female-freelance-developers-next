@@ -105,7 +105,7 @@ export default function Home(props) {
 						<input
 							className="search-field"
 							type="text"
-							placeholder="Search"
+							placeholder="Search location or skill"
 							value={searchTerm}
 							onChange={handleChange}
 						/>
