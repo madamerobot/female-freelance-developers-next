@@ -182,6 +182,11 @@ input[type="text"] {
 	padding-bottom: 20px;
 }
 
+input::placeholder,
+textarea::placeholder {
+	color: black;
+}
+
 .submit-form-wrapper input,
 .submit-form-wrapper textarea {
 	font-family: riposteLight;
@@ -195,11 +200,6 @@ input[type="text"] {
 
 .submit-form-wrapper textarea {
 	resize: none;
-}
-
-.submit-form-wrapper input::placeholder,
-.submit-form-wrapper textarea::placeholder {
-	color: black;
 }
 
 .submit-form-wrapper p,
