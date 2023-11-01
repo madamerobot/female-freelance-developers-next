@@ -8,32 +8,37 @@ import Entry from "../components/entry";
 export default function Home(props) {
   const { entries } = props;
 
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchParams, setSearchParams] = useState("");
   const [results, setResults] = useState([]);
+
+  /* Helper method */
+  //   const isSubset = (array1, array2) =>
+  //     array2.every((element) => array1.includes(element));
 
   useEffect(() => {
     const params = router.query.search;
     if (params) {
-      setSearchTerm(params);
+      setSearchParams(decodeURIComponent(params));
     }
     setResults(entries);
   }, []);
 
   useEffect(() => {
-    const results = entries.filter((entry) =>
-      entry.searchInfo.includes(searchTerm.toLowerCase())
-    );
-    setResults(results);
-  }, [searchTerm]);
-
-  useEffect(() => {
-    if (searchTerm) {
-      router.push(`/?search=${searchTerm}`, undefined, { shallow: true });
+    if (searchParams) {
+      const query = encodeURI(searchParams);
+      router.push(`/?search=${query}`, undefined, {
+        shallow: true,
+      });
     }
-  }, [searchTerm]);
+
+    const filteredEntries = entries.filter((entry) =>
+      entry.searchInfo.includes(searchParams.toLowerCase())
+    );
+    setResults(filteredEntries);
+  }, [searchParams]);
 
   const handleChange = (e) => {
-    setSearchTerm(e.target.value);
+    setSearchParams(e.target.value);
   };
 
   return (
@@ -124,7 +129,7 @@ export default function Home(props) {
               className="search-field"
               type="text"
               placeholder="Search location or skill"
-              value={searchTerm}
+              value={searchParams}
               onChange={handleChange}
             />
           </div>
@@ -141,6 +146,13 @@ export default function Home(props) {
   );
 }
 
+// const constructSearchInfo = (expertise) => {
+//   const arr = [...expertise.split(/\s+/g)].filter(
+//     (item) => item.match(/^[0-9a-z]+$/) && item !== ""
+//   );
+//   return arr;
+// };
+
 Home.getInitialProps = async (ctx) => {
   const res = await fetch(`${process.env.SHEETY_URL}`);
   const json = await res.json();
@@ -148,7 +160,7 @@ Home.getInitialProps = async (ctx) => {
     return {
       ...entry,
       searchInfo:
-        `${entry.location} ${entry.expertise} ${entry.firstName} ${entry.lastName}`.toLowerCase(),
+        `${entry.location}, ${entry.firstName}, ${entry.lastName}, ${entry.expertise}`.toLowerCase(),
     };
   });
   const shuffledEntries = entries
