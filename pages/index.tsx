@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { router } from "next/router";
+import { useRouter } from "next/router";
 
 /* components */
 import Head from "../components/Head";
@@ -31,6 +31,8 @@ export default function Home(props: HomeProps) {
 
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState<EntryInfo[]>([]);
+
+  const router = useRouter();
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
