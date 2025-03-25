@@ -1,3 +1,4 @@
+import React from "react";
 import { useState, useEffect } from "react";
 
 /* components */
@@ -5,11 +6,30 @@ import Head from "../components/Head";
 import Entry from "../components/Entry";
 import Header from "../components/Header";
 
-export default function Home(props) {
+type EntryInfo = {
+  firstName: string;
+  lastName: string;
+  website: string;
+  email: string;
+  socialHandle: string;
+  socialUrl: string;
+  expertise: string;
+  tags: string;
+  location: string;
+  approved: string;
+  id: number;
+  searchInfo: string;
+};
+
+type HomeProps = {
+  entries: EntryInfo[];
+};
+
+export default function Home(props: HomeProps) {
   const { entries } = props;
 
   const [searchTerm, setSearchTerm] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState<EntryInfo[]>([]);
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
@@ -92,10 +112,10 @@ export default function Home(props) {
   );
 }
 
-Home.getInitialProps = async (ctx) => {
+Home.getInitialProps = async () => {
   const res = await fetch(`${process.env.SHEETY_URL}`);
   const json = await res.json();
-  const entries = json.list.map((entry) => {
+  const entries = json.list.map((entry: EntryInfo) => {
     return {
       ...entry,
       searchInfo:
@@ -107,5 +127,6 @@ Home.getInitialProps = async (ctx) => {
     .sort((a, b) => a.sort - b.sort)
     .map((a) => a.value)
     .filter((a) => a.approved === "Yes");
+
   return { entries: shuffledEntries };
 };
