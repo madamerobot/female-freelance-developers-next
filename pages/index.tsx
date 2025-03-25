@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { router } from "next/router";
 
 /* components */
 import Head from "../components/Head";
@@ -36,12 +37,24 @@ export default function Home(props: HomeProps) {
   };
 
   useEffect(() => {
+    const params = router.query.search;
+
+    if (params) {
+      setSearchTerm(params.toString());
+    }
     setResults(entries);
   }, []);
 
   useEffect(() => {
+    const multiSearchAnd = (text, searchWords) =>
+      searchWords.every((el) => {
+        return text.match(new RegExp(el, "i"));
+      });
+
+    const searchArray = [...searchTerm.split(" ")];
+
     const results = entries.filter((entry) =>
-      entry.searchInfo.includes(searchTerm.toLowerCase())
+      multiSearchAnd(entry.searchInfo, searchArray)
     );
     setResults(results);
   }, [searchTerm]);
